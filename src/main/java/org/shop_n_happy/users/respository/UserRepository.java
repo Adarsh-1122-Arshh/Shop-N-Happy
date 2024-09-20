@@ -54,9 +54,6 @@ public class UserRepository {
         userSelectQuery.setParameter("password", UserSignIn.getPassword());
         User user = (User)userSelectQuery.getSingleResult();
         tx.commit();
-
         return user;
     }
-
-
 }

@@ -17,8 +17,8 @@ public class UserController {
         System.out.println("----- in controller signup --- ");
         User u = userService.createUser(user);
         return u;
-
     }
+
     @RequestMapping(path = "/signin", method = RequestMethod.POST)
     public User userSignIn(@RequestBody User UserSignIn){
         return userService.userSignIn(UserSignIn);

@@ -15,7 +15,7 @@ public User createUser(User user){
     return u;
 }
 
-    public User userSignIn(@RequestBody User UserSignIn){
+public User userSignIn(@RequestBody User UserSignIn){
         return userRepo.userSignIn(UserSignIn);
     }
 }

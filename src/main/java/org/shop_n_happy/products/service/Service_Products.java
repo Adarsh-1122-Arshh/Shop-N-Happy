@@ -5,6 +5,8 @@ import org.shop_n_happy.products.repository.Repository_Products;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 
 public class Service_Products {
@@ -13,8 +15,17 @@ public class Service_Products {
 
 
     public Products createProducts(Products pro){
-     Products products = rep_Pro.createProducts(pro);
-     return products;
+     Products product = rep_Pro.createProducts(pro);
+     for(ProductImages productImage : pro.getProductImage()){
+         productImage.setProduct(product);
+         rep_Pro.createProductImage(productImage);
 
+     }
+     return product;
+    }
+
+    public List<Products> fetchProducts(){
+
+        return rep_Pro.fetchProducts();
     }
 }

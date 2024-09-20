@@ -1,9 +1,12 @@
 package org.shop_n_happy.products.model;
 
 import jakarta.persistence.*;
+import org.shop_n_happy.products.service.ProductImages;
 import org.shop_n_happy.seller.model.Seller;
 import org.shop_n_happy.products.service.Brand;
 import org.shop_n_happy.products.service.Category;
+
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -48,6 +51,14 @@ public class Products {
 
     @Column(name = "description")
     private String description;
+
+
+    @OneToMany
+    @JoinColumn  (name ="imageId", referencedColumnName = "id")
+    private List<ProductImages> productImage;
+
+    @Transient
+    private int imageId;
 
 
     public int getId() {
@@ -133,4 +144,18 @@ public class Products {
         this.description = description;
     }
 
+    public List<ProductImages> getProductImage() {
+        return productImage;
+    }
+    public void setProductImage(List<ProductImages> productImage) {
+        this.productImage = productImage;
+    }
+
+    public int getImageId() {
+        return imageId;
+    }
+
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
+    }
 }
